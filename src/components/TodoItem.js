@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { delTodo, changeDone } from 'store/actions'
+import { delTodo, changeDone, changeTodo } from 'store/actions'
 
 export default function TodoItem({ item }) {
   const dispatch = useDispatch()
@@ -24,6 +24,16 @@ export default function TodoItem({ item }) {
   // useEffect(() => {
   //   inputRef.current.focus()
   // }, [current])
+
+  const keyUp = (e, id) => {
+    if (e.KeyCode === 27) {
+      setCurrent('')
+    }
+    if (e.keyCode === 13) {
+      dispatch(changeTodo(id, e.target.value))
+      setCurrent('')
+    }
+  }
 
   return (
     <li
@@ -47,6 +57,7 @@ export default function TodoItem({ item }) {
         defaultValue={item.name}
         ref={inputRef}
         onBlur={() => setCurrent('')}
+        onKeyUp={(e) => keyUp(e, item.id)}
       />
     </li>
   )

@@ -15,6 +15,10 @@ const todos = (state = [], action) =>
         draft.find((item) => item.id === payload.id).done = payload.done
         break
 
+      case 'CHANGE_TODO':
+        draft.find((item) => item.id === payload.id).name = payload.name
+        break
+
       case 'DEL_TODO':
         return draft.filter((item) => item.id !== payload)
 

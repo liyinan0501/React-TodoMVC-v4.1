@@ -44,3 +44,15 @@ export const changeDone = (id, done) => {
     })
   }
 }
+
+export const changeTodo = (id, name) => {
+  return async (dispatch) => {
+    await axios.patch(`http://localhost:8888/todos/${id}`, {
+      name,
+    })
+    dispatch({
+      type: 'CHANGE_TODO',
+      payload: { id, name },
+    })
+  }
+}
