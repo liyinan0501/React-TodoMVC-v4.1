@@ -3,15 +3,15 @@ import { useDispatch } from 'react-redux'
 import { addTodo } from 'store/actions'
 
 const TodoAdd = () => {
-  const dispatch = useDispatch()
-
   const [name, setName] = useState('')
+  const dispatch = useDispatch()
   const onKeyUp = (e) => {
     if (e.keyCode === 13) {
       dispatch(addTodo(name))
       setName('')
     }
   }
+
   return (
     <header className="header">
       <h1>todos</h1>

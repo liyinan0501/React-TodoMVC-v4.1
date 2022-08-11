@@ -1,6 +1,4 @@
-import { useRef } from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { delTodo, changeDone, changeTodo } from 'store/actions'
 

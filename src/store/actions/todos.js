@@ -1,10 +1,17 @@
 import axios from 'axios'
+import {
+  GET_LIST,
+  ADD_TODO,
+  DEL_TODO,
+  CHANGE_DONE,
+  CHANGE_TODO,
+} from 'store/constants/index'
 
 export const getList = () => {
   return async (dispatch) => {
     const res = await axios.get('http://localhost:8888/todos')
     dispatch({
-      type: 'GET_LIST',
+      type: GET_LIST,
       payload: res.data,
     })
   }
@@ -17,7 +24,7 @@ export const addTodo = (name) => {
       done: false,
     })
     dispatch({
-      type: 'ADD_TODO',
+      type: ADD_TODO,
       payload: res.data,
     })
   }
@@ -27,7 +34,7 @@ export const delTodo = (id) => {
   return async (dispatch) => {
     await axios.delete(`http://localhost:8888/todos/${id}`)
     dispatch({
-      type: 'DEL_TODO',
+      type: DEL_TODO,
       payload: id,
     })
   }
@@ -39,7 +46,7 @@ export const changeDone = (id, done) => {
       done,
     })
     dispatch({
-      type: 'CHANGE_DONE',
+      type: CHANGE_DONE,
       payload: { id, done },
     })
   }
@@ -51,7 +58,7 @@ export const changeTodo = (id, name) => {
       name,
     })
     dispatch({
-      type: 'CHANGE_TODO',
+      type: CHANGE_TODO,
       payload: { id, name },
     })
   }

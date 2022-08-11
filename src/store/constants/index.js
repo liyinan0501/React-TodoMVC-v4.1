@@ -1,0 +1,6 @@
+export const CHANGE_FILTER = 'CHANGE_FILTER'
+export const GET_LIST = 'GET_LIST'
+export const ADD_TODO = 'ADD_TODO'
+export const DEL_TODO = 'DEL_TODO'
+export const CHANGE_DONE = 'CHANGE_DONE'
+export const CHANGE_TODO = 'CHANGE_TODO'
