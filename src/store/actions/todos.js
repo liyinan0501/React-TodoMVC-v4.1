@@ -25,10 +25,22 @@ export const addTodo = (name) => {
 
 export const delTodo = (id) => {
   return async (dispatch) => {
-    const res = await axios.delete(`http://localhost:8888/todos/${id}`)
+    await axios.delete(`http://localhost:8888/todos/${id}`)
     dispatch({
       type: 'DEL_TODO',
       payload: id,
+    })
+  }
+}
+
+export const changeDone = (id, done) => {
+  return async (dispatch) => {
+    await axios.patch(`http://localhost:8888/todos/${id}`, {
+      done,
+    })
+    dispatch({
+      type: 'CHANGE_DONE',
+      payload: { id, done },
     })
   }
 }
