@@ -19,6 +19,7 @@ export default function TodoItem({ item }) {
     inputRef.current.focus()
   }
 
+  // when editing, auto focus.
   // useEffect(() => {
   //   inputRef.current.focus()
   // }, [current])
